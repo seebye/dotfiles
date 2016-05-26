@@ -36,7 +36,7 @@ convert $file -define modulate:colorspace=HSB -modulate 50 -font $FONT -pointsiz
 
 # overlay with color
 # vpn indicator? (background)
-# create tutorial for convert: https://www.imagemagick.org/Usage/color_mods/
+# great tutorial for convert: https://www.imagemagick.org/Usage/color_mods/
 convert "$file2" -define modulate:colorspace=HSB -modulate 100 +level-colors gold, "$file.2.png"
 
 return 0
