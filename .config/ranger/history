@@ -1,0 +1,50 @@
+search id
+open_with gummi "$@" &
+open_with "gummi '$@' &"
+shell touch Aufgabe33.tex
+search bi
+search san
+search do
+search wall
+search q
+search ima
+mkdir schemer2
+search ne
+search sch
+search out
+rename 7.pnp
+open_with 3
+mkdir out
+search x
+search X
+chmod 700
+chmod 000
+search sche
+cd 
+search Wall
+search fedora2
+search cal
+open_with krita
+search Bi
+search 5v
+search uni
+mkdir new
+rename 1.png
+rename 2.png
+rename 3.png
+rename 4.png
+search ou
+rename out-2.org_.fuck
+delete
+rename 5.ogv
+rename 7.ogv
+rename 6.ogv
+search Sand
+search new
+shell convert 5.ogv 5.gif
+open_with 
+shell echo test ;sleep 1
+mplayer -ao null 5.ogv -vo jpeg:outdir=output
+shell mplayer -ao null 5.ogv -vo jpeg:outdir=output
+shell convert output/* 5.gif
+

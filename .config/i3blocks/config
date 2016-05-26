@@ -1,0 +1,87 @@
+separator=false
+separator_block_width=5
+border_top=0
+border_left=0
+border_right=0
+border_bottom=2
+
+[battery-icon]
+command=$HOME/i3/battery.sh -i
+interval=10
+
+[battery]
+command=$HOME/i3/battery.sh
+interval=10
+
+[dlna]
+full_text=
+command=[[ -z "${BLOCK_BUTTON}" ]] || ( [[ "${BLOCK_BUTTON}" == "1" ]] && ((/usr/bin/pavucontrol -t 3 || true) && $HOME/i3/choose_audio_output.sh) || sleep 1 ) ; pgrep pulseaudio-dlna &> /dev/null && (echo "  " ; echo ; echo "#D15F46") || echo
+interval=5
+signal=1
+color=#D15F46
+
+[volume-icon]
+command=$HOME/i3/volume_control.py icon
+interval=1
+#color see script
+
+[volume]
+#command=[[ -z "${BLOCK_BUTTON}" ]] || ( [[ "${BLOCK_BUTTON}" == "1" ]] && ((/usr/bin/pavucontrol -t 3 || true) && $HOME/i3/volume_control.py signal) || $HOME/i3/volume_control.py toggle ); $HOME/i3/volume_control.py i3blocks
+command=[[ -z "${BLOCK_BUTTON}" ]] || ( [[ "${BLOCK_BUTTON}" == "1" ]] && ((/usr/bin/pavucontrol -t 3 || true) && $HOME/i3/volume_control.py toggle) || $HOME/i3/toggle_dlna.sh ); $HOME/i3/volume_control.py i3blocks
+interval=1
+#once
+signal=1
+markup=pango
+#border=#e5e5e5
+#border=#7a3225
+
+[bandwidth-icon-incoming]
+color=#D15F46
+full_text=  
+
+
+[bandwidth-icon-outgoing]
+color=#D15F46
+full_text= 
+
+[bandwidth]
+command=~/i3/bandwidth.sh
+interval=2
+#border=#e5e5e5
+#border=#4d6633
+
+#[wireless]
+#label=    
+#command=[[ -z "$(iwgetid -r)" ]] || echo "$(iwgetid -r) "
+#interval=10
+#border=#917033
+
+
+[cpuprofile]
+#full_text=    
+full_text= 
+color=#D15F46
+command=echo " "; echo; echo "#D15F46" ; ~/i3/cpu_profile.sh &> /dev/null &
+#command=echo "    " ; ~/i3/cpu_profile.sh &> /dev/null &
+#border=#e5e5e5
+#border=#7a232c
+
+[cpufreq]
+command=echo " $($HOME/i3/cpufreq.py) " ; [[ "${BLOCK_BUTTON}" == "1" ]] && $HOME/i3/cpu_profile.sh &
+interval=3
+
+#[temperature]
+#label=
+#command=echo " $($HOME/scripts/temperature.sh 'Core 0') $($HOME/scripts/temperature.sh 'Core 1') " 
+#interval=5
+#border=#7a232c
+
+
+[time-icon]
+color=#D15F46
+full_text=   
+
+[time]
+command=echo "`date +'%d %b'` `date +'%T'` "; [[ "${BLOCK_BUTTON}" == "1" ]] && xterm -T "Calendar" -e "i3/cal.sh" &
+interval=1
+markup=pango

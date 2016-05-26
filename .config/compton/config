@@ -1,0 +1,88 @@
+#backend = "glx";
+#vsync = "opengl-swc";
+
+#glx-copy-from-front = true;
+#glx-swap-method = 2;
+#xrender-sync = true;
+#xrender-sync-fence = true;
+
+# Shadow
+shadow = true;
+#no-dnd-shadow = false;
+#no-dock-shadow = false;
+clear-shadow = true;
+shadow-radius = 5;
+shadow-opacity = 0.2;
+# The left offset for shadows. (default -15)
+shadow-offset-x = -5;
+# The top offset for shadows. (default -15)
+shadow-offset-y = -3;
+
+
+shadow-exclude = [
+    "! name~=''",
+    "name = 'i3bar for output eDP1'",
+    "name = 'Notification'",
+    "class_g ?= 'Notify-osd'",
+    "class_g ?= 'Cairo-dock'",
+    "class_g = 'conky'",
+    "class_g = 'Conky'"
+#    "_GTK_FRAME_EXTENTS@:c"
+];
+
+# transparent terminal - works as arg only
+#opacity-rule = [
+#	"90:class_g = 'XTerm'"
+#];
+
+# Fading
+fading = true;          # Fade windows during opacity changes.
+fade-delta = 3;      # The time between steps in a fade in milliseconds. (default 10).
+fade-in-step = 0.033;        # Opacity change between steps while fading in. (default 0.028).
+fade-out-step = 0.033;       # Opacity change between steps while fading out. (default 0.03).
+# no-fading-openclose = true;   # Fade windows in/out when opening/closing.
+
+menu-opacity = 1;
+inactive-opacity = 1;
+active-opacity = 1;
+#frame-opacity = 0.5;
+inactive-opacity-override = false;
+alpha-step = 0.06;
+
+# Dim inactive windows. (0.0 - 1.0)
+inactive-dim = 0.2;
+# Do not let dimness adjust based on window opacity.
+#inactive-dim-fixed = true;
+# Blur background of transparent windows. Bad performance with X Render backend. GLX backend is preferred.
+# blur-background = true;
+# Blur background of opaque windows with transparent frames as well.
+# blur-background-frame = true;
+# Do not let blur radius adjust based on window opacity.
+blur-background-fixed = false;
+blur-background-exclude = [
+    "window_type = 'dock'",
+    "window_type = 'desktop'"
+];
+
+wintypes:
+{
+    tooltip =
+    {
+        # fade: Fade the particular type of windows.
+        fade = true;
+        # shadow: Give those windows shadow
+        shadow = false;
+        # opacity: Default opacity for the type of windows.
+        opacity = 0.85;
+        # focus: Whether to always consider windows of this type focused.
+        focus = true;
+    };
+};
+
+
+focus-exclude = [
+     "class_g = 'Gcolor3'"
+];
+
+
+

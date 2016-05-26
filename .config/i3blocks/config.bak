@@ -1,0 +1,84 @@
+separator=false
+separator_block_width=5
+border_top=0
+border_left=0
+border_right=0
+border_bottom=4
+
+[music]
+#command=[[ -z "${BLOCK_BUTTON}" ]] || ([[ "${BLOCK_BUTTON}"=="1" ]] && (mpc toggle -q)); $HOME/scripts/music.sh;
+command=$HOME/scripts/music.sh
+signal=1
+interval=5
+border=#e5e5e5
+#border=#422C2F
+
+[dlna]
+full_text=  
+command=[[ -z "${BLOCK_BUTTON}" ]] || ( [[ "${BLOCK_BUTTON}" == "1" ]] && ((/usr/bin/pavucontrol -t 3 || true) && $HOME/.bin/choose_audio_output.sh) || sleep 1 ) ; pgrep pulseaudio-dlna &> /dev/null && echo "  " || echo
+interval=5
+signal=1
+border=#e5e5e5
+#border=#917033
+
+[volume]
+#command=[[ -z "${BLOCK_BUTTON}" ]] || ( [[ "${BLOCK_BUTTON}" == "1" ]] && ((/usr/bin/pavucontrol -t 3 || true) && $HOME/scripts/volume_control.py signal) || $HOME/scripts/volume_control.py toggle ); $HOME/scripts/volume_control.py i3blocks
+command=[[ -z "${BLOCK_BUTTON}" ]] || ( [[ "${BLOCK_BUTTON}" == "1" ]] && ((/usr/bin/pavucontrol -t 3 || true) && $HOME/scripts/volume_control.py toggle) || $HOME/.bin/toggle_dlna.sh ); $HOME/scripts/volume_control.py i3blocks
+interval=1
+#once
+signal=1
+markup=pango
+#border=#e5e5e5
+#border=#7a3225
+
+[bandwidth]
+command=~/scripts/bandwidth.sh
+interval=1
+border=#e5e5e5
+#border=#4d6633
+
+#[wireless]
+#label=    
+#command=[[ -z "$(iwgetid -r)" ]] || echo "$(iwgetid -r) "
+#interval=10
+#border=#917033
+
+[cpuprofile]
+full_text=    
+command=echo "    " ; ~/.bin/cpu_profile.sh &> /dev/null &
+border=#e5e5e5
+#border=#7a232c
+
+[cpufreq]
+label=
+command=echo " $($HOME/scripts/cpufreq.py) "
+interval=4.5
+border=#e5e5e5
+#border=#7a232c
+
+#[temperature]
+#label=
+#command=echo " $($HOME/scripts/temperature.sh 'Core 0') $($HOME/scripts/temperature.sh 'Core 1') " 
+#interval=5
+#border=#7a232c
+
+[battery]
+command=$HOME/scripts/battery.sh
+interval=10
+border=#e5e5e5
+#border=#1c7a59
+
+[time]
+label=    
+#command=echo "`date +'%a %d %b'` <b>`date +'%T'`</b> "; [[ -z "${BLOCK_BUTTON}" ]] || gsimplecal &
+command=echo "`date +'%a %d %b'` `date +'%T'` "; [[ -z "${BLOCK_BUTTON}" ]] || gsimplecal &
+interval=1
+markup=pango
+border=#e5e5e5
+#border=#928374
+
+#[i3lock]
+#full_text=  
+#command=~/.bin/lock.sh &
+#border=#585858
+#separator_block_width=1
